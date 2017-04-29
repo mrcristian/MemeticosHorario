@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PruebaLibTabu
+namespace LibTabu.algoritmo_base.comparadores
 {
-    class Program
+    class ComparatorMinimize
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }

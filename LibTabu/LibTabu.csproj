@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>afa0e2e5-838a-4f65-bc96-1690a9c8d53e</ProjectGuid>
+    <ProjectGuid>{AFA0E2E5-838A-4F65-BC96-1690A9C8D53E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LibTabu</RootNamespace>
@@ -30,24 +30,35 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="algoritmo_base\comparadores\ComparatorMaximize.cs" />
+    <Compile Include="algoritmo_base\comparadores\ComparatorMinimize.cs" />
+    <Compile Include="algoritmo_base\ConfiguracionTabuSearch.cs" />
+    <Compile Include="algoritmo_base\criterios_aspiracion\AspiracionPorDefault.cs" />
+    <Compile Include="algoritmo_base\criterios_aspiracion\CriteriosAspiracionEnum.cs" />
+    <Compile Include="algoritmo_base\criterios_aspiracion\StrategyAspiracion.cs" />
+    <Compile Include="algoritmo_base\criterios_aspiracion\StrategyAspiracionPorDireccionBusqueda.cs" />
+    <Compile Include="algoritmo_base\criterios_aspiracion\StrategyAspiracionPorObjetivo.cs" />
+    <Compile Include="algoritmo_base\criterios_parada\CriteriosParadaEnum.cs" />
+    <Compile Include="algoritmo_base\criterios_parada\StrategyParada.cs" />
+    <Compile Include="algoritmo_base\criterios_parada\StrategyParadaEvaluacionObjetivo.cs" />
+    <Compile Include="algoritmo_base\criterios_parada\StrategyParadaNumIteraciones.cs" />
+    <Compile Include="algoritmo_base\criterios_parada\StrategyParadaNumIteracionesSinMejora.cs" />
+    <Compile Include="algoritmo_base\Individual.cs" />
+    <Compile Include="algoritmo_base\lista_tabu\TabuList.cs" />
+    <Compile Include="algoritmo_base\lista_tabu\TabuListMovimientos.cs" />
+    <Compile Include="algoritmo_base\TabuSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>
