@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{541749EF-3E98-4D0C-8887-82712AD44CAC}</ProjectGuid>
+    <ProjectGuid>{420D38D5-64B9-4964-99F0-75FD45B6E54A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MemeticosHorario</RootNamespace>
-    <AssemblyName>MemeticosHorario</AssemblyName>
+    <RootNamespace>PruebaLibTabu</RootNamespace>
+    <AssemblyName>PruebaLibTabu</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,39 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algoritmo\Alg.cs" />
-    <Compile Include="Utilidades\FileManager.cs" />
-    <Compile Include="Modelo\Gen.cs" />
-    <Compile Include="Modelo\Asignatura.cs" />
-    <Compile Include="Modelo\Aula.cs" />
-    <Compile Include="Modelo\Costo_Hora_Prof.cs" />
-    <Compile Include="Modelo\Cost_Asig_Prof.cs" />
-    <Compile Include="Modelo\Horario.cs" />
-    <Compile Include="Modelo\Individuo.cs" />
-    <Compile Include="Modelo\Profesor.cs" />
-    <Compile Include="Modelo\TipoAula.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Aulas.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Asignaturas.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Profesores.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LibTabu\LibTabu.csproj">
-      <Project>{afa0e2e5-838a-4f65-bc96-1690a9c8d53e}</Project>
-      <Name>LibTabu</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
