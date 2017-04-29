@@ -6,25 +6,26 @@ using System.Threading.Tasks;
 
 namespace MemeticosHorario.Modelo
 {
-    class Profesor
+    public class Profesor
     {
+        string Nombre { get; set; }
+        string Codigo { get; set; }
+        public virtual List<Asignatura> Asignaturas { get; set; }
+        List<Costo_Hora_Prof> HorariosPreferentes { get; set; }
+
         public Profesor(string nombre, string codigo)
         {
-            this.nombre = nombre;
-            this.codigo = codigo;
+            this.Nombre = nombre;
+            this.Codigo = codigo;
         }
         public Profesor(string nombre, string codigo,
             List<Asignatura> asignaturas)
         {
-            this.nombre = nombre;
-            this.codigo = codigo;
-            this.asignaturas = asignaturas;
+            this.Nombre = nombre;
+            this.Codigo = codigo;
+            this.Asignaturas = asignaturas;
         }
-        string nombre { get; set; }
-        string codigo { get; set; }
-        public virtual List<Asignatura> asignaturas { get; set; }
-
-        List<Costo_Hora_Prof> horariosPreferentes { get; set; }
+        
 
        
     }

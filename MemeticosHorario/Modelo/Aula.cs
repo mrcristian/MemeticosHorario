@@ -7,12 +7,20 @@ using System.Threading.Tasks;
 namespace MemeticosHorario.Modelo
 {
     public class Aula
-    {
+    {       
+        public string Nombre { get; set; }
+        public TipoAula Tipo { get; set; }
+        public List<Horario> Horarios { get; set; }
+        public bool Disponible(Horario h)
+        {
+            return Horarios.Contains(h);
+        }
+
         public Aula(string nombre, int tipo)
         {
-            this.nombre = nombre;
-            this.tipo = (TipoAula)tipo;
-            horarios = new List<Horario>() {
+            this.Nombre = nombre;
+            this.Tipo = (TipoAula)tipo;
+            Horarios = new List<Horario>() {
                 Horario.L_7_9,
                 Horario.L_9_11,
                 Horario.L_11_1,
@@ -45,14 +53,6 @@ namespace MemeticosHorario.Modelo
 
             };
         }
-        public string nombre { get; set; }
-        public TipoAula tipo { get; set; }
-        public List<Horario> horarios { get; set; }
-
-        public bool Disponible(Horario h)
-        {
-            return horarios.Contains(h);
-        }
     }
 
     public static class AulaHelper
@@ -73,7 +73,7 @@ namespace MemeticosHorario.Modelo
             {
                 var n = r.Next(0, Aulas.Count);
                 var aula = Aulas[n];
-                if (aula.tipo == tipo &&
+                if (aula.Tipo == tipo &&
                     aula.Disponible(h))
                     return aula;
             }

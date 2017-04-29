@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace MemeticosHorario.Modelo
 {
-    class Asignatura
+    public class Asignatura
     {
-        public string nombre { get; set; }
-        public string codigo { get; set; }
-        public TipoAula tipoAula { get; set; }
-        public int codigo_Profesor { get; set; }
+        public string Nombre { get; set; }
+        public string Codigo { get; set; }
+        public TipoAula TipoAula { get; set; }
+        public int Codigo_Profesor { get; set; }
 
         public Asignatura(string nombre, string codigo, int tipo)
         {
-            this.nombre = nombre;
-            this.codigo = codigo;
-            this.tipoAula = (TipoAula)tipo;
+            this.Nombre = nombre;
+            this.Codigo = codigo;
+            this.TipoAula = (TipoAula)tipo;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace MemeticosHorario.Modelo
 {
     class Cost_Asig_Prof
     {
-        int codigo_Asig { get; set; }
-        List<Costo_Hora_Prof> horarios_Coste { get; set; }
+        int Codigo_Asignatura { get; set; }
+        List<Costo_Hora_Prof> Horarios_Coste { get; set; }
     }
 }
