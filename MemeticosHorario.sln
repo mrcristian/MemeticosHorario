@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemeticosHorario", "MemeticosHorario\MemeticosHorario.csproj", "{541749EF-3E98-4D0C-8887-82712AD44CAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{541749EF-3E98-4D0C-8887-82712AD44CAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{541749EF-3E98-4D0C-8887-82712AD44CAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{541749EF-3E98-4D0C-8887-82712AD44CAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{541749EF-3E98-4D0C-8887-82712AD44CAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
