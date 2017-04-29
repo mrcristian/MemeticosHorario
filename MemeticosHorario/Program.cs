@@ -1,4 +1,5 @@
-﻿using MemeticosHorario.Modelo;
+﻿using MemeticosHorario.Control;
+using MemeticosHorario.Modelo;
 using MemeticosHorario.Utilidades;
 using System;
 using System.Collections.Generic;
@@ -10,21 +11,10 @@ namespace MemeticosHorario
 {
     class Program
     {
-        static File_Manager fm = new File_Manager();
-        static List<Aula> misAulas;
-        static List<Asignatura> misAsignaturas;
-        static List<Profesor> misProfesores;
         static void Main(string[] args)
         {
-            
-            cargarAsignaturas();
-            cargarProfesores();
-
-            AulaHelper.Inicializar(misAulas);
-            var ind = Individuo.aleatorio(misAsignaturas);
+            Controlador cont = new Controlador();
         }
-        
-        
     }
 
 

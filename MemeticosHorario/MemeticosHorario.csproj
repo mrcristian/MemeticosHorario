@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algoritmo\Alg.cs" />
+    <Compile Include="Control\Controlador.cs" />
     <Compile Include="DAL\ModelLoader.cs" />
     <Compile Include="Utilidades\FileManager.cs" />
     <Compile Include="Modelo\Gen.cs" />

@@ -10,26 +10,65 @@ namespace MemeticosHorario.Modelo
     {
         public Individuo(List<Gen> genes)
         {
-            this.genes = genes;
-            this.fitness = 0;
+            this.Genes = genes;
+            this.Fitness = 0;
         }
-        public List<Gen> genes { get; set; }
+        public List<Gen> Genes { get; set; }
         //public double adaptacion { get; set; }
-        public double fitness { get; set; }
+        public double Fitness { get; set; }
 
 
         public void Evaluar()
         {
+            int valor = 0;
+            //se sumará el coste de los horarios asignados
+            valor += Genes
+                .Select(gen => gen.Coste)
+                .Sum();
 
+            //se calcula el número de apariciones del profesor
+            //en el mismo horario
+
+            valor += 5* Genes
+                .GroupBy(gen => new
+                {
+                    CodigoProf = gen.Asignatura.NombreProfesor,
+                    Horario = gen.Horario
+                })
+                .Select(gen => new
+                {
+                    Key = gen.Key,
+                    Count = gen.Count()
+                })
+                .Where(gen => gen.Count > 1)
+                .Count();
+
+            //se calcula el número de apariciones del profesor
+            //en el mismo horario
+
+            valor += 3* Genes
+                .GroupBy(gen => new
+                {
+                    Horario = gen.Horario,
+                    Aula = gen.Aula.Nombre
+                })
+                .Select(gen => new
+                {
+                    Key = gen.Key,
+                    Count = gen.Count()
+                })
+                .Where(res => res.Count > 1)
+                .Count();
+            this.Fitness = valor;
         }
 
-        public static Individuo aleatorio(List<Asignatura> asignaturas) {
+        public static Individuo Aleatoreo(List<Asignatura> asignaturas) {
             var genes = asignaturas
                 .Select(asg => {
                     var horario = HorarioHelper.HorarioAleatoreo();
                     return new Gen()
                     {
-                        Codigo_Asig = asg,
+                        Asignatura = asg,
                         Coste = 0,
                         Horario = horario,
                         Aula = AulaHelper.Aleatorea(asg.TipoAula, horario)

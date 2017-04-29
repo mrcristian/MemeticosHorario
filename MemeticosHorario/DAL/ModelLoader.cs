@@ -10,7 +10,7 @@ namespace MemeticosHorario.DAL
 {
     public static class ModelLoader
     {
-        private static File_Manager _fileManager;
+        private static File_Manager _fileManager = new File_Manager();
 
         public static List<Aula> Get_Aulas()
         {
@@ -36,10 +36,10 @@ namespace MemeticosHorario.DAL
                 _fileManager.OpenFile("Asignaturas.txt", false, false);
                 while (_fileManager.Readable)
                 {
-                    string[] datos = _fileManager.ReadLine().Split(',');
+                    string[] datos = _fileManager.ReadLine().Split('|');
                     asignaturas.Add(
                         new Asignatura(datos[1], datos[0],
-                        Convert.ToInt32(datos[2])));
+                        Convert.ToInt32(datos[2]),datos[3]));
                 }
             }
             return asignaturas;
@@ -55,7 +55,7 @@ namespace MemeticosHorario.DAL
                 {
                     string[] datos = _fileManager.ReadLine().Split(',');
                     var asignaturas = Get_Asignaturas()
-                        .Where(a => a.Codigo_Profesor.Equals(datos[1]))
+                        .Where(a => a.NombreProfesor.Equals(datos[1]))
                         .ToList();
                     profesores.Add(new Profesor(datos[1], datos[0],
                         asignaturas));
