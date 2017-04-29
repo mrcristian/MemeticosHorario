@@ -29,10 +29,10 @@ namespace MemeticosHorario.Modelo
                     var horario = HorarioHelper.HorarioAleatoreo();
                     return new Gen()
                     {
-                        codigo_Asig = asg,
-                        coste = 0,
-                        horario = horario,
-                        Aula = AulaHelper.Aleatorea(asg.tipoAula, horario)
+                        Codigo_Asig = asg,
+                        Coste = 0,
+                        Horario = horario,
+                        Aula = AulaHelper.Aleatorea(asg.TipoAula, horario)
                     };
                 }).ToList();
             return new Individuo(genes);

@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algoritmo\Alg.cs" />
+    <Compile Include="DAL\ModelLoader.cs" />
     <Compile Include="Utilidades\FileManager.cs" />
     <Compile Include="Modelo\Gen.cs" />
     <Compile Include="Modelo\Asignatura.cs" />

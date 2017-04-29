@@ -8,9 +8,9 @@ namespace MemeticosHorario.Modelo
 {
     class Gen
     {
-        public Asignatura codigo_Asig { get; set; }
+        public Asignatura Codigo_Asig { get; set; }
         public Aula Aula { get; set; }
-        public int coste { get; set; }
-        public Horario horario { get; set; }
+        public int Coste { get; set; }
+        public Horario Horario { get; set; }
     }
 }

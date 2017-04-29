@@ -8,7 +8,7 @@ namespace MemeticosHorario.Modelo
 {
     class Costo_Hora_Prof
     {
-        Horario horario { get; set; }
-        int coste { get; set; }
+        Horario Horario { get; set; }
+        int Coste { get; set; }
     }
 }
