@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibTabu.algoritmo_base.comparadores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace MemeticosHorario.Modelo
 {
-    class Individuo
+    class Individuo : Individual
     {
         public Individuo(List<Gen> genes)
         {
             this.Genes = genes;
-            this.Fitness = 0;
+            Evaluar();
+            
         }
         public List<Gen> Genes { get; set; }
         //public double adaptacion { get; set; }
-        public double Fitness { get; set; }
+        public int Fitness { get; set; }
 
 
         public void Evaluar()
@@ -76,6 +78,53 @@ namespace MemeticosHorario.Modelo
                 }).ToList();
             return new Individuo(genes);
 
+        }
+
+        public List<Individual> getNeighbourhood()
+        {
+            var individuos = new List<Individual>();
+            for (int i = 0; i < 20; i++)
+            {
+                var genes = Genes
+                .Select(gen => {
+                    return new Gen()
+                    {
+                        Asignatura = gen.Asignatura,
+                        Coste = 0,
+                        Horario = gen.Horario,
+                        Aula = AulaHelper.Aleatorea(gen.Asignatura.TipoAula,
+                        gen.Horario)
+                    };
+                }).ToList();
+                individuos.Add(new Individuo(genes));
+            }
+            return individuos;
+        }
+
+        public double getEvaluacion()
+        {
+            
+            return this.Fitness;
+        }
+
+        public int getIndividualSize()
+        {
+            return Genes.Count;
+        }
+
+        public double getValue(int position)
+        {
+            return 0;
+        }
+
+        public Individual clonar()
+        {
+            return new Individuo(this.Genes);
+        }
+
+        public int CompareTo(object obj)
+        {
+            return this.Fitness - ((Individuo)obj).Fitness;
         }
     }
 

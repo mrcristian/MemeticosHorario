@@ -28,15 +28,19 @@ namespace LibTabu.algoritmo_base.comparadores
          * Es la lista tabú que usa el algoritmo
          */
         private TabuList listaTabu;
-
+        private ConfiguracionTabuSearch _configuracion;
 
         public TabuSearch()
         {
-            ConfiguracionTabuSearch configuracion = new ConfiguracionTabuSearch();
-            configuracion.setTipoProblema(false);
-            configuracion.setCriterioParada(CriteriosParadaEnum.NUM_ITERACIONES, 1000);
-            configuracion.setCriterioAspiracion(CriteriosAspiracionEnum.POR_OBJETIVO);
-            configuracion.setListaTabu(new TabuListMovimientos(), 5);
+            _configuracion = new ConfiguracionTabuSearch();
+            _configuracion.setTipoProblema(false);
+            _configuracion.setCriterioParada(CriteriosParadaEnum.NUM_ITERACIONES, 1000);
+            _configuracion.setCriterioAspiracion(CriteriosAspiracionEnum.POR_OBJETIVO);
+            _configuracion.setListaTabu(new TabuListMovimientos(), 5);
+
+            var _this = this;
+            _configuracion.aplicarConfiguración(ref _this);
+
         }
         /**
          * Permite aplicar el algoritmo de búsqueda tabú
@@ -48,6 +52,7 @@ namespace LibTabu.algoritmo_base.comparadores
          */
         public Individual tabuSearch(Individual seed)
         {
+            
 
             //Configuración y declaración de variables
             seed.getEvaluacion();

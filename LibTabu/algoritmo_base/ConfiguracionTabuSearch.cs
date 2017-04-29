@@ -114,10 +114,10 @@ namespace LibTabu.algoritmo_base.comparadores
          * @param algoritmoBusqueda es el objeto al que se le va a aplicar la
          * configuración
          */
-        public void aplicarConfiguración(TabuSearch algoritmoBusqueda)
+        public void aplicarConfiguración(ref TabuSearch algoritmoBusqueda)
         {
-            this.aplicarCriterioAspiracion(algoritmoBusqueda);
-            this.aplicarCriterioParada(algoritmoBusqueda);
+            this.aplicarCriterioAspiracion(ref algoritmoBusqueda);
+            this.aplicarCriterioParada(ref algoritmoBusqueda);
             //this.aplicarComparador(algoritmoBusqueda);
             algoritmoBusqueda.setAspiracionPorDefecto(new AspiracionPorDefault());
             algoritmoBusqueda.setListaTabu(listaTabu);
@@ -128,7 +128,7 @@ namespace LibTabu.algoritmo_base.comparadores
          * @param algoritmoBusqueda es el objeto al que se le va a aplicar la
          * configuración
          */
-        private void aplicarCriterioAspiracion(TabuSearch algoritmoBusqueda)
+        private void aplicarCriterioAspiracion(ref TabuSearch algoritmoBusqueda)
         {
             switch (this.tipoAspiracion)
             {
@@ -151,7 +151,7 @@ namespace LibTabu.algoritmo_base.comparadores
          * @param algoritmoBusqueda es el objeto al que se le va a aplicar la
          * configuración
          */
-        private void aplicarCriterioParada(TabuSearch algoritmoBusqueda)
+        private void aplicarCriterioParada(ref TabuSearch algoritmoBusqueda)
         {
             switch (this.tipoParada)
             {

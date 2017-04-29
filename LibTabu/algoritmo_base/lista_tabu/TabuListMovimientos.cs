@@ -27,14 +27,14 @@ namespace LibTabu.algoritmo_base.lista_tabu
         public void actualizar(Individual newSolution, Individual currentSolution)
         {
             int posX = -1, posY = -1;
-            for (int i = 0; i < listaTabu.Length; i++)
+            for (int i = 0; i < listaTabu.GetLength(0); i++)
             {
                 if (newSolution.getValue(i) != currentSolution.getValue(i))
                 {
                     if (posX == -1) posX = i;
                     else posY = i;
                 }
-                for (int j = 0; j < listaTabu.Length; j++)
+                for (int j = 0; j < listaTabu.GetLength(0); j++)
                 {
                     listaTabu[i,j] = (listaTabu[i,j] == 0) ? 0 : listaTabu[i,j] - 1;
                 }
@@ -51,7 +51,7 @@ namespace LibTabu.algoritmo_base.lista_tabu
         public bool isTabu(Individual promisingSolution, Individual currentSolution)
         {
             int posX = -1, posY = -1;
-            for (int i = 0; i < listaTabu.Length; i++)
+            for (int i = 0; i < listaTabu.GetLength(0); i++)
             {
                 if (promisingSolution.getValue(i) != currentSolution.getValue(i))
                 {
@@ -72,7 +72,7 @@ namespace LibTabu.algoritmo_base.lista_tabu
         public int tiempoTabu(Individual promisingSolution, Individual currentSolution)
         {
             int posX = -1, posY = -1;
-            for (int i = 0; i < listaTabu.Length; i++)
+            for (int i = 0; i < listaTabu.GetLength(0); i++)
             {
                 if (promisingSolution.getValue(i) != currentSolution.getValue(i))
                 {

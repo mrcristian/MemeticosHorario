@@ -28,12 +28,13 @@ namespace PruebaLibTabu.Problema_Flujo_Trabajo
 
         public int CompareTo(object obj)
         {
-            throw new NotImplementedException();
+            return (int)
+                (this.getEvaluacion() - ((Individual)obj).getEvaluacion());
         }
 
         public double getEvaluacion()
         {
-            return evaluarFila(this.vec.Length - 1, this.matriz.Length - 1);
+            return evaluarFila(this.vec.Length - 1, this.matriz.GetLength(0) - 1);
         }
 
         public int getIndividualSize()
