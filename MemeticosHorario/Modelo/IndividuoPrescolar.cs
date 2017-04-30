@@ -163,28 +163,7 @@ namespace MemeticosHorario.Modelo
             this.Fitness = valor;
         }
 
-        public static IndividuoPrescolar Aleatoreo(List<Asignatura> asignaturas,
-            List<Aula> aulas)
-        {
-            Random r = new Random();
-            var genes = new List<Gen>();
-            int horarios = HorarioHelper.NumHorarios();
-            foreach (var item in aulas)
-            {
-                for (int i = 0; i < horarios; i++)
-                {
-                    genes.Add(new Gen()
-                    {
-                        Aula = item,
-                        Horario = (Horario)i,
-                        Asignatura = asignaturas[r.Next(asignaturas.Count)],
-                        Coste = 0
-                    });
-                }
-            }
-            return new IndividuoPrescolar(genes);
-
-        }
+       
 
         public override List<Individual> getNeighbourhood()
         {
@@ -212,14 +191,13 @@ namespace MemeticosHorario.Modelo
             }
             return individuos;
         }
-
         
         public override Individual clonar()
         {
             return new IndividuoPrescolar(this.Genes);
         }
         
-        public string toString()
+        public override string toString()
         {
 
             var query = this.Genes

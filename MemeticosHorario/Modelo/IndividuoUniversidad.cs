@@ -58,24 +58,7 @@ namespace MemeticosHorario.Modelo
                 .Where(res => res.Count > 1)
                 .Count();
             this.Fitness = valor;
-        }
-
-        public static Individuo Aleatoreo(List<Asignatura> asignaturas)
-        {
-            var genes = asignaturas
-                .Select(asg => {
-                    var horario = HorarioHelper.HorarioAleatoreo();
-                    return new Gen()
-                    {
-                        Asignatura = asg,
-                        Coste = 0,
-                        Horario = horario,
-                        Aula = AulaHelper.Aleatorea(asg.TipoAula, horario)
-                    };
-                }).ToList();
-            return new IndividuoUniversidad(genes);
-
-        }
+        }        
 
         public override List<Individual> getNeighbourhood()
         {
@@ -98,11 +81,14 @@ namespace MemeticosHorario.Modelo
             return individuos;
         }
 
-        
-
         public override Individual clonar()
         {
             return new IndividuoUniversidad(this.Genes);
+        }
+
+        public override string toString()
+        {
+            throw new NotImplementedException();
         }
     }
 }

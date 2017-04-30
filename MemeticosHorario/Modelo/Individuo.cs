@@ -9,6 +9,7 @@ namespace MemeticosHorario.Modelo
 {
     public abstract class Individuo: Individual
     {
+        
         public Individuo(List<Gen> genes)
         {
             this.Genes = genes;
@@ -22,6 +23,18 @@ namespace MemeticosHorario.Modelo
         public abstract void Evaluar();
 
         public abstract List<Individual> getNeighbourhood();
+
+        
+
+        //public virtual Individuo Cruce(Individuo Padre)
+        //{
+        //    var genesPadre = Padre.Genes;
+        //    int tamanioGenes = Genes.Count();
+        //    var genes = (tamanioGenes % 2 == 0) ?
+        //        Genes:
+        //        new List<Gen>();
+        //}
+        //protected abstract Individuo getNuevoIndividuo(List<Gen> gen);
 
         public double getEvaluacion()
         {
@@ -45,5 +58,6 @@ namespace MemeticosHorario.Modelo
         {
             return this.Fitness - ((Individuo)obj).Fitness;
         }
+        public abstract string toString();
     }
 }
