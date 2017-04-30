@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MemeticosHorario.Modelo
 {
-    class Gen
+    public class Gen
     {
         public Asignatura Asignatura { get; set; }
         public Aula Aula { get; set; }

@@ -11,13 +11,24 @@ namespace MemeticosHorario.DAL
     public static class ModelLoader
     {
         private static File_Manager _fileManager = new File_Manager();
+        private static string _dirAulas;
+        private static string _dirAsignaturas;
+        private static string _dirProfesores;
+
+        public static void Inicializar(string dirAulas,
+            string dirAsignaturas, string dirProfesores)
+        {
+            _dirAulas = dirAulas;
+            _dirAsignaturas = dirAsignaturas;
+            _dirProfesores = dirProfesores;
+        }
 
         public static List<Aula> Get_Aulas()
         {
             var aulas = new List<Aula>();
             using (_fileManager)
             {
-                _fileManager.OpenFile("Aulas.txt", false, false);
+                _fileManager.OpenFile(_dirAulas, false, false);
                 while (_fileManager.Readable)
                 {
                     var datos = _fileManager.ReadLine().Split(',');
@@ -33,7 +44,7 @@ namespace MemeticosHorario.DAL
             var asignaturas = new List<Asignatura>();
             using (_fileManager)
             {
-                _fileManager.OpenFile("Asignaturas.txt", false, false);
+                _fileManager.OpenFile(_dirAsignaturas, false, false);
                 while (_fileManager.Readable)
                 {
                     string[] datos = _fileManager.ReadLine().Split('|');
@@ -50,7 +61,7 @@ namespace MemeticosHorario.DAL
             var profesores = new List<Profesor>();
             using (_fileManager)
             {
-                _fileManager.OpenFile("Profesores.txt", false, false);
+                _fileManager.OpenFile(_dirProfesores, false, false);
                 while (_fileManager.Readable)
                 {
                     string[] datos = _fileManager.ReadLine().Split(',');

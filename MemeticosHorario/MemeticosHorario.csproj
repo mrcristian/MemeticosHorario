@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="Control\Controlador.cs" />
     <Compile Include="DAL\ModelLoader.cs" />
+    <Compile Include="Modelo\Individuo.cs" />
+    <Compile Include="Modelo\IndividuoUniversidad.cs" />
     <Compile Include="Utilidades\FileManager.cs" />
     <Compile Include="Modelo\Gen.cs" />
     <Compile Include="Modelo\Asignatura.cs" />
@@ -51,7 +53,7 @@
     <Compile Include="Modelo\Costo_Hora_Prof.cs" />
     <Compile Include="Modelo\Cost_Asig_Prof.cs" />
     <Compile Include="Modelo\Horario.cs" />
-    <Compile Include="Modelo\Individuo.cs" />
+    <Compile Include="Modelo\IndividuoPrescolar.cs" />
     <Compile Include="Modelo\Profesor.cs" />
     <Compile Include="Modelo\TipoAula.cs" />
     <Compile Include="Program.cs" />
@@ -61,13 +63,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Aulas.txt">
+    <Content Include="Datos\Datos_Preescolar\Aulas.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Asignaturas.txt">
+    <Content Include="Datos\Datos_Preescolar\Asignaturas.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Profesores.txt">
+    <Content Include="Datos\Datos_Preescolar\Profesores.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datos\Datos_Universidad\Asignaturas.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datos\Datos_Universidad\Aulas.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datos\Datos_Universidad\Profesores.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -77,5 +88,6 @@
       <Name>LibTabu</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
