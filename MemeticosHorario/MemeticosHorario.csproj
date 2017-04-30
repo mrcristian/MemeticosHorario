@@ -49,6 +49,7 @@
     <Compile Include="Modelo\IndividuoFactory\IIndividuoFactory_Preescolar.cs" />
     <Compile Include="Modelo\IndividuoFactory\IIndividuoFactory_Universidad.cs" />
     <Compile Include="Modelo\IndividuoUniversidad.cs" />
+    <Compile Include="Modelo\PseudocodigoMemetico\Pseudocodigo.cs" />
     <Compile Include="Utilidades\FileManager.cs" />
     <Compile Include="Modelo\Gen.cs" />
     <Compile Include="Modelo\Asignatura.cs" />

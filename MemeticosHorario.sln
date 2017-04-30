@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibTabu", "LibTabu\LibTabu.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaLibTabu", "PruebaLibTabu\PruebaLibTabu.csproj", "{420D38D5-64B9-4964-99F0-75FD45B6E54A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibMemetico", "Memetico\LibMemetico.csproj", "{9719AE6B-3E33-4294-A5E9-DBF83FA225AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{420D38D5-64B9-4964-99F0-75FD45B6E54A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{420D38D5-64B9-4964-99F0-75FD45B6E54A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{420D38D5-64B9-4964-99F0-75FD45B6E54A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9719AE6B-3E33-4294-A5E9-DBF83FA225AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9719AE6B-3E33-4294-A5E9-DBF83FA225AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9719AE6B-3E33-4294-A5E9-DBF83FA225AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9719AE6B-3E33-4294-A5E9-DBF83FA225AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
