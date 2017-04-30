@@ -10,12 +10,10 @@ namespace MemeticosHorario.Modelo
     class IndividuoPrescolar : Individuo
     {
         public IndividuoPrescolar(List<Gen> genes)
-            :base(genes)
+            : base(genes)
         {
 
         }
-        
-
 
         public override void Evaluar()
         {
@@ -91,7 +89,7 @@ namespace MemeticosHorario.Modelo
                 {
                     Asignatura = gen.Asignatura,
                     Aula = gen.Aula
-                })                
+                })
                 .Select(gen => new
                 {
                     Key = gen.Key,
@@ -163,8 +161,6 @@ namespace MemeticosHorario.Modelo
             this.Fitness = valor;
         }
 
-       
-
         public override List<Individual> getNeighbourhood()
         {
             var individuos = new List<Individual>();
@@ -191,34 +187,36 @@ namespace MemeticosHorario.Modelo
             }
             return individuos;
         }
-        
+
         public override Individual clonar()
         {
             return new IndividuoPrescolar(this.Genes);
         }
-        
+
         public override string toString()
         {
-
+            var res = "";
             var query = this.Genes
                 .GroupBy(gen => gen.Aula.Nombre)
                 .ToList();
             foreach (var item in query)
             {
-                Console.WriteLine($"Aula: {item.Key}");
+                res = $"Aula: {item.Key}\n";
                 foreach (var subItem in item
                     .OrderBy(i => i.Horario)
                     .ToList())
                 {
-                    Console.WriteLine($"Asignatura {subItem.Asignatura.Nombre}: Horario: {subItem.Horario}");
+                    res += $"{subItem.Horario} - " +
+                    $"{subItem.Asignatura.Nombre} \n";
                 }
 
             }
-            string res = "";
-            //foreach (var item in this.Genes) {
-            //    res = res + "Asignatura: " + item.Asignatura.Nombre + ",Aula :" + item.Aula.Nombre + ",Horario:" + item.Horario +"\n";
-            //}
             return res;
+        }
+
+        protected override Individuo getNuevoIndividuo(List<Gen> genes)
+        {
+            return new IndividuoPrescolar(genes);
         }
     }
 

@@ -15,7 +15,6 @@ namespace MemeticosHorario.Modelo
 
         }
 
-
         public override void Evaluar()
         {
             int valor = 0;
@@ -85,10 +84,15 @@ namespace MemeticosHorario.Modelo
         {
             return new IndividuoUniversidad(this.Genes);
         }
+        
+        protected override Individuo getNuevoIndividuo(List<Gen> genes)
+        {
+            return new IndividuoUniversidad(genes);
+        }
 
         public override string toString()
         {
-            throw new NotImplementedException();
+            return "";
         }
     }
 }

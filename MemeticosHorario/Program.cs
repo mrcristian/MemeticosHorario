@@ -7,6 +7,7 @@ namespace MemeticosHorario
         static void Main(string[] args)
         {
             Controlador cont = new Controlador();
+            cont.Test();
             
         }
     }

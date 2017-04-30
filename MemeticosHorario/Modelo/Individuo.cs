@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace MemeticosHorario.Modelo
 {
-    public abstract class Individuo: Individual
+    public abstract class Individuo : Individual
     {
-        
+
         public Individuo(List<Gen> genes)
         {
             this.Genes = genes;
             Evaluar();
 
         }
-        public List<Gen> Genes { get; set; }        
+
+        public List<Gen> Genes { get; set; }
 
         public int Fitness { get; set; }
 
@@ -24,17 +25,29 @@ namespace MemeticosHorario.Modelo
 
         public abstract List<Individual> getNeighbourhood();
 
-        
+        public virtual Individuo Cruce(Individuo Padre)
+        {
+            var genesPadre = Padre.Genes;
+            int n = Genes.Count();
+            var genes = (n % 2 == 0) ?
+                Genes.Take(n/2).Concat(genesPadre.Skip(n/2))
+                : Genes.Take((n/2)+1).Concat(genesPadre.Skip(n/2));
+            return getNuevoIndividuo(genes.ToList());
+        }
 
-        //public virtual Individuo Cruce(Individuo Padre)
-        //{
-        //    var genesPadre = Padre.Genes;
-        //    int tamanioGenes = Genes.Count();
-        //    var genes = (tamanioGenes % 2 == 0) ?
-        //        Genes:
-        //        new List<Gen>();
-        //}
-        //protected abstract Individuo getNuevoIndividuo(List<Gen> gen);
+        public virtual Individuo Cruce2(Individuo Padre)
+        {
+            var genesPadre = Padre.Genes;
+            int n = Genes.Count();
+            var genesComunes = Genes
+                .Where(gen => genesPadre.Contains(gen));
+            var genes = (n % 2 == 0) ?
+                Genes.Take(n / 2).Concat(genesPadre.Skip(n / 2))
+                : Genes.Take((n / 2) + 1).Concat(genesPadre.Skip(n / 2));
+            return getNuevoIndividuo(genes.ToList());
+        }
+
+        protected abstract Individuo getNuevoIndividuo(List<Gen> genes);
 
         public double getEvaluacion()
         {
@@ -58,6 +71,7 @@ namespace MemeticosHorario.Modelo
         {
             return this.Fitness - ((Individuo)obj).Fitness;
         }
+
         public abstract string toString();
     }
 }
