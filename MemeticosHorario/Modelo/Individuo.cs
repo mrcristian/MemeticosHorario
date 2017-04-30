@@ -40,10 +40,16 @@ namespace MemeticosHorario.Modelo
             var genesPadre = Padre.Genes;
             int n = Genes.Count();
             var genesComunes = Genes
-                .Where(gen => genesPadre.Contains(gen));
-            var genes = (n % 2 == 0) ?
-                Genes.Take(n / 2).Concat(genesPadre.Skip(n / 2))
-                : Genes.Take((n / 2) + 1).Concat(genesPadre.Skip(n / 2));
+                .Where(gen => genesPadre.Contains(gen)).ToList();
+
+            var genes = genesComunes
+                .Union(
+                Enumerable.Range(0, n - genesComunes.Count())
+                .Select( i =>
+                {
+                    return Gen.Aleatoreo();
+                }));
+
             return getNuevoIndividuo(genes.ToList());
         }
 

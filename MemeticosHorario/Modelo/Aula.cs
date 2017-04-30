@@ -55,6 +55,7 @@ namespace MemeticosHorario.Modelo
             r = new Random();
             Aulas = aulas;
         }
+        
 
         public static Aula Aleatorea(TipoAula tipo, Horario h)
         {

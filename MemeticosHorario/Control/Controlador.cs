@@ -4,6 +4,7 @@ using MemeticosHorario.Modelo;
 using MemeticosHorario.Modelo.IndividuoFactory;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MemeticosHorario.Control
 {
@@ -15,6 +16,9 @@ namespace MemeticosHorario.Control
 
         public Controlador()
         {
+            ModelLoader.Inicializar("Datos/Datos_Preescolar/Aulas.txt",
+                "Datos/Datos_Preescolar/Asignaturas.txt",
+                "Datos/Datos_Preescolar/Profesores.txt");
             AsignaturaHelper.Inicializar(ModelLoader.Get_Asignaturas());
             AulaHelper.Inicializar(ModelLoader.Get_Aulas());
             
@@ -23,9 +27,7 @@ namespace MemeticosHorario.Control
 
         public void Test()
         {
-            ModelLoader.Inicializar("Datos/Datos_Preescolar/Aulas.txt",
-                "Datos/Datos_Preescolar/Asignaturas.txt",
-                "Datos/Datos_Preescolar/Profesores.txt");
+            
             _factory = new IIndividuoFactory_Preescolar();
 
             var ind = _factory.Aleatoreo();
@@ -50,27 +52,22 @@ namespace MemeticosHorario.Control
 
         public void Test2()
         {
-            ModelLoader.Inicializar("Datos/Datos_Preescolar/Aulas.txt",
-                "Datos/Datos_Preescolar/Asignaturas.txt",
-                "Datos/Datos_Preescolar/Profesores.txt");
             _factory = new IIndividuoFactory_Preescolar();
 
-            var ind = _factory.Aleatoreo();
-            var ind2 = _factory.Aleatoreo();
-            var ind3 = ind.Cruce(ind2);
-            TabuSearch busqueda = new TabuSearch();
-            //IndividuoPrescolar best 
-            //    = (IndividuoPrescolar)busqueda.tabuSearch(ind);
+            var individuos = Enumerable.Range(0, 20)
+                .Select(i =>
+                {
+                    return _factory.Aleatoreo();
+                }).ToList();
 
-            Console.WriteLine("=======================Individuo 1=======================");
-            Console.WriteLine("Evaluación: " + ind.getEvaluacion()
-                + "   Individuo: " + ind.toString());
-            Console.WriteLine("=======================Individuo 2=======================");
-            Console.WriteLine("Evaluación: " + ind2.getEvaluacion()
-                + "   Individuo: " + ind2.toString());
-            Console.WriteLine("=======================Individuo Hijo=======================");
-            Console.WriteLine("Evaluación: " + ind3.getEvaluacion()
-                + "   Individuo: " + ind3.toString());
+            for (int i = 0; i < individuos.Count-1; i++)
+            {
+                var ind3 = individuos[i].Cruce(individuos[i + 1]);
+                var ind4 = individuos[i].Cruce2(individuos[i + 1]);
+                Console.WriteLine($"{i}:{individuos[i].Fitness}-{individuos[i+1].Fitness}" +
+                    $"H: {ind3.Fitness} - {ind4.Fitness}");
+            }
+            Console.ReadKey();
         }
     }
 }

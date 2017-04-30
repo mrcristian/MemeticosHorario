@@ -13,6 +13,17 @@ namespace MemeticosHorario.Modelo
         public int Coste { get; set; }
         public Horario Horario { get; set; }
 
+        public static Gen Aleatoreo()
+        {
+            var asg = AsignaturaHelper.Aleatorea();
+            var hor = HorarioHelper.HorarioAleatoreo();
+            return new Gen()
+            {
+                Asignatura = asg,
+                Aula = AulaHelper.Aleatorea(asg.TipoAula, hor),
+                Horario = hor
+            };
+        }
 
         public override int GetHashCode()
         {
