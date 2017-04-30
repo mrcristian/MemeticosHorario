@@ -83,7 +83,7 @@ namespace MemeticosHorario.Modelo
             var jueves = new List<int>() { 12, 13, 14, 15 };
             var viernes = new List<int>() { 16, 17, 18, 19 };
 
-            valor += 50 * Genes
+            valor += 15 * Genes
                 .Where(res => lunes.Contains((int)res.Horario))
                 .GroupBy(gen => new
                 {
@@ -98,7 +98,7 @@ namespace MemeticosHorario.Modelo
                 .Where(res => res.Count > 1)
                 .Sum(res => res.Count);
 
-            valor += 50 * Genes
+            valor += 15 * Genes
             .Where(res => martes.Contains((int)res.Horario))
             .GroupBy(gen => new
             {
@@ -113,7 +113,7 @@ namespace MemeticosHorario.Modelo
             .Where(res => res.Count > 1)
             .Sum(res => res.Count);
 
-            valor += 50 * Genes
+            valor += 15 * Genes
                 .Where(res => miercoles.Contains((int)res.Horario))
                 .GroupBy(gen => new
                 {
@@ -128,7 +128,7 @@ namespace MemeticosHorario.Modelo
                 .Where(res => res.Count > 1)
                 .Sum(res => res.Count);
 
-            valor += 50 * Genes
+            valor += 15 * Genes
                 .Where(res => jueves.Contains((int)res.Horario))
                 .GroupBy(gen => new
                 {
@@ -143,7 +143,7 @@ namespace MemeticosHorario.Modelo
                 .Where(res => res.Count > 1)
                 .Sum(res => res.Count);
 
-            valor += 50 * Genes
+            valor += 15 * Genes
                 .Where(res => viernes.Contains((int)res.Horario))
                 .GroupBy(gen => new
                 {
