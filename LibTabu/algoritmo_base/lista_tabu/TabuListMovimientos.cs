@@ -26,6 +26,7 @@ namespace LibTabu.algoritmo_base.lista_tabu
 
         public void actualizar(Individual newSolution, Individual currentSolution)
         {
+            
             int posX = -1, posY = -1;
             for (int i = 0; i < listaTabu.GetLength(0); i++)
             {

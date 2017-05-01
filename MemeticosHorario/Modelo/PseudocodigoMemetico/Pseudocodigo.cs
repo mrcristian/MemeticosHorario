@@ -16,11 +16,11 @@ namespace MemeticosHorario.PseudocodigoMemetico
         int tamanioPoblacion;
         TabuSearch busquedaTabu;
 
-        public Pseudocodigo(IIndividuoFactory inFactory, int inTamañoPoblacion)
+        public Pseudocodigo(IIndividuoFactory inFactory, int inTamanioPoblacion)
         {
             this.poblacion = new List<Individuo>();
             this.factory = inFactory;
-            this.tamanioPoblacion = inTamañoPoblacion;
+            this.tamanioPoblacion = inTamanioPoblacion;
             busquedaTabu = new TabuSearch();
         }
 
@@ -28,18 +28,23 @@ namespace MemeticosHorario.PseudocodigoMemetico
         {
             inicializarPoblacion();
             ordenarPoblacion();
-            Console.WriteLine("**************Mejor individuo en la primera vuelta: " + poblacion[0].toString() +"Evaluacion: "+ poblacion[0].Fitness);
+            Console.WriteLine("**************Mejor individuo en la primera vuelta: " 
+                + poblacion[0] +"Evaluacion: "+ poblacion[0].Fitness);
             int i = 1000;
             //poblacion[0]
+            Random r = new Random();
             while (i > 0 )
             {
                 busquedaTabu = new TabuSearch();
-                Individuo hijo = cruce(poblacion[0], poblacion[1]);                
+                Individuo hijo
+                        = cruce(poblacion[0],
+                        poblacion[r.Next(tamanioPoblacion)]);
                 hijo = (Individuo)busquedaTabu.tabuSearch(hijo);
                 poblacion.Add(hijo);
                 ordenarPoblacion();
-                i--;
-                Console.WriteLine($"{i}: ************ Evaluacion: " + poblacion[0].Fitness);
+                Console.WriteLine($"Gen: #{i} - " +
+                    $"Eval: {poblacion[0].Fitness}");
+                i--;                
             }            
             return poblacion[0];            
         }

@@ -61,9 +61,10 @@ namespace LibTabu.algoritmo_base.comparadores
             Individual previousSolution = seed;
             Individual promisingSolution;
             listaTabu.createTabuList(seed.getIndividualSize());
-
-            while (!estrategiaParada.debeParar(bestSolution))
+            int n = 0;
+            while (!estrategiaParada.debeParar(bestSolution) && n<50)
             {
+                n++;
                 promisingSolution = null;
                 //Se genera el vecindario y se lo ordena según el valor de la evaluación
                 List<Individual> neighbourhood = currentSolution.getNeighbourhood();

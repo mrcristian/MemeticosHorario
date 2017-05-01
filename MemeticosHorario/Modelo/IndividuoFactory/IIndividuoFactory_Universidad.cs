@@ -30,5 +30,10 @@ namespace MemeticosHorario.Modelo.IndividuoFactory
                 }).ToList();
             return new IndividuoUniversidad(genes);
         }
+
+        public List<Individuo> Neighborhood(Individuo ind)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

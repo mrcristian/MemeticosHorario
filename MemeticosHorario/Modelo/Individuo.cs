@@ -9,15 +9,45 @@ namespace MemeticosHorario.Modelo
 {
     public abstract class Individuo : Individual
     {
-
-        public Individuo(List<Gen> genes)
+        public List<List<Gen>> CrucesProfesor
+        {
+            get
+            {
+                return Genes
+                .GroupBy(gen => new
+                {
+                    CodigoProf = gen.Asignatura.NombreProfesor,
+                    Horario = gen.Horario
+                })
+                .Where(gen => gen.Count() > 1)
+                .Select(r => r.ToList())
+                .ToList();
+            }
+        }
+        public List<List<Gen>> CrucesMateria
+        {
+            get
+            {
+                return Genes
+                .GroupBy(gen => new
+                {
+                    CodigoProf = gen.Asignatura.Nombre,
+                    Horario = gen.Horario
+                })
+                .Where(gen => gen.Count() > 1)
+                .Select(r => r.ToList())
+                .ToList();
+            }
+        }
+        public Individuo() { }
+        public Individuo(IEnumerable<Gen> genes)
         {
             this.Genes = genes;
             Evaluar();
-
         }
 
-        public List<Gen> Genes { get; set; }
+
+        public IEnumerable<Gen> Genes { get; set; }
 
         public int Fitness { get; set; }
 
@@ -34,24 +64,7 @@ namespace MemeticosHorario.Modelo
                 : Genes.Take((n/2)+1).Concat(genesPadre.Skip(n/2));
             return getNuevoIndividuo(genes.ToList());
         }
-
-        public virtual Individuo Cruce2(Individuo Padre)
-        {
-            var genesPadre = Padre.Genes;
-            int n = Genes.Count();
-            var genesComunes = Genes
-                .Where(gen => genesPadre.Contains(gen)).ToList();
-
-            var genes = genesComunes
-                .Union(
-                Enumerable.Range(0, n - genesComunes.Count())
-                .Select( i =>
-                {
-                    return Gen.Aleatoreo();
-                }));
-
-            return getNuevoIndividuo(genes.ToList());
-        }
+        
 
         protected abstract Individuo getNuevoIndividuo(List<Gen> genes);
 
@@ -63,7 +76,7 @@ namespace MemeticosHorario.Modelo
 
         public int getIndividualSize()
         {
-            return Genes.Count;
+            return Genes.Count();
         }
 
         public double getValue(int position)
@@ -77,7 +90,6 @@ namespace MemeticosHorario.Modelo
         {
             return this.Fitness - ((Individuo)obj).Fitness;
         }
-
-        public abstract string toString();
+        
     }
 }

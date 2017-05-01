@@ -32,8 +32,27 @@ namespace MemeticosHorario.Modelo
 
     public static class HorarioHelper
     {
+        private static Dictionary<int, string> Semana
+            = new Dictionary<int, string>()
+            {
+                { 0, "Lunes"},
+                { 1, "martes"},
+                { 2, "miercoles"},
+                { 3, "jueves"},
+                { 4, "viernes"},
+            };
+        
         private static Random r = new Random(10);
-        private static int numHorarios = Enum.GetNames(typeof(Horario)).Length;
+        private static int numHorarios = 
+            Enum.GetNames(typeof(Horario)).Length;
+
+        public static string Dia(Horario horario)
+        {
+            var n = (int)horario;
+
+            return Semana[n/5];
+        }
+
         public static Horario HorarioAleatoreo()
         {
             return (Horario)r.Next(0, numHorarios);

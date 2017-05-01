@@ -9,5 +9,6 @@ namespace MemeticosHorario.Modelo.IndividuoFactory
     public interface IIndividuoFactory
     {
         Individuo Aleatoreo();
+        List<Individuo> Neighborhood(Individuo ind);
     }
 }

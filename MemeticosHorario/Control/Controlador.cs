@@ -20,41 +20,40 @@ namespace MemeticosHorario.Control
             ModelLoader.Inicializar("Datos/Datos_Preescolar/Aulas.txt",
                "Datos/Datos_Preescolar/Asignaturas.txt",
                "Datos/Datos_Preescolar/Profesores.txt");
+            //ModelLoader.Inicializar("Datos/Datos_Universidad/Aulas.txt",
+            //   "Datos/Datos_Universidad/Asignaturas.txt",
+            //   "Datos/Datos_Universidad/Profesores.txt");
             AsignaturaHelper.Inicializar(ModelLoader.Get_Asignaturas());
             AulaHelper.Inicializar(ModelLoader.Get_Aulas());
         }
 
         public void Test()
         {
-            ModelLoader.Inicializar("Datos/Datos_Preescolar/Aulas.txt",
-                "Datos/Datos_Preescolar/Asignaturas.txt",
-                "Datos/Datos_Preescolar/Profesores.txt");
             _factory = new IIndividuoFactory_Preescolar();
 
             TabuSearch busqueda = new TabuSearch();
 
-            Pseudocodigo memetico = new Pseudocodigo(_factory,10);
+            Pseudocodigo memetico = new Pseudocodigo(_factory,50);
 
-            memetico.empezar();                
-
-
-            //var ind = _factory.Aleatoreo();
-            //var ind2 = _factory.Aleatoreo();
-            //var ind3 = ind.Cruce(ind2);            
-            //IndividuoPrescolar best 
-            ////    = (IndividuoPrescolar)busqueda.tabuSearch(ind);
-            //Console.WriteLine("=======================Individuo 1=======================");
-            //Console.WriteLine("Evaluación: " + ind.getEvaluacion()
-            //    + "   Individuo: " + ind.toString());
-            //Console.WriteLine("=======================Individuo 2=======================");            
-            //Console.WriteLine("Evaluación: " + ind2.getEvaluacion()
-            //    + "   Individuo: " + ind2.toString());
-            //Console.WriteLine("=======================Individuo Hijo=======================");
-            //Console.WriteLine("Evaluación: " + ind3.getEvaluacion()
-            //    + "   Individuo: " + ind3.toString());
+            var m = memetico.empezar();
+            Console.WriteLine(m);
 
             Console.ReadKey();
         }
+        public void Test3()
+        {
+            _factory = new IIndividuoFactory_Universidad();
+
+            TabuSearch busqueda = new TabuSearch();
+
+            Pseudocodigo memetico = new Pseudocodigo(_factory, 10);
+
+            var m = memetico.empezar();
+            Console.WriteLine(m);
+
+            Console.ReadKey();
+        }
+
 
         public void Test2()
         {
@@ -69,7 +68,7 @@ namespace MemeticosHorario.Control
             for (int i = 0; i < individuos.Count-1; i++)
             {
                 var ind3 = individuos[i].Cruce(individuos[i + 1]);
-                var ind4 = individuos[i].Cruce2(individuos[i + 1]);
+                var ind4 = individuos[i].Cruce(individuos[i + 1]);
                 Console.WriteLine($"{i}:{individuos[i].Fitness}-{individuos[i+1].Fitness}" +
                     $"H: {ind3.Fitness} - {ind4.Fitness}");
             }
